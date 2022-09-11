@@ -70,18 +70,22 @@ class _GetUserCurrentLocationState extends State<GetUserCurrentLocation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-        initialCameraPosition: _kGooglePlex,
-        mapType: MapType.normal,
-        markers: Set<Marker>.of(markers),
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
+      body: googleMapView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.directions),
       ),
+    );
+  }
+
+  Widget googleMapView() {
+    return GoogleMap(
+      initialCameraPosition: _kGooglePlex,
+      mapType: MapType.normal,
+      markers: Set<Marker>.of(markers),
+      onMapCreated: (GoogleMapController controller) {
+        _controller.complete(controller);
+      },
     );
   }
 }
